@@ -1,0 +1,66 @@
+Final project proposal
+================
+
+### Group members (names and UNIs)
+
+Yiyang Liu <yl4360@cumc.columbia.edu>
+
+Xinru Wang <xw2676@cumc.columbia.edu>
+
+Tianhui He <th2723@cumc.columbia.edu>
+
+Shenglin Liu <sl4659@cumc.columbia.edu>
+
+Junhui Mi <jm4998@cumc.columbia.edu>
+
+### Tentative project title:
+
+“Why people suicide?”
+
+### Motivation for this project
+
+In recent years, extensive reports have indicated that there is an
+increasing trend of suicide which catch the public’s attention. Our
+project intends to conduct multiple analysis based on this pointed
+social topic. Specifically, we hope to identify the trends of suicide
+rates by country, gender, age and year and find possible explanations
+for these trends. Furthermore, we will also utilize World Happiness
+Report to contrast with suicide statistics to see whether happiness
+index is an explanatory variable of suicide.
+
+### Intended final products
+
+A website which gives an overview of the project scope, data,
+approaches, visualizations, and other results and a short explanatory
+video with narrated screencast illustrating our project
+
+### Anticipated data sources
+
+WHO Suicide Statistics
+(<https://www.kaggle.com/szamil/who-suicide-statistics>)
+
+World Happiness Report
+(<https://www.kaggle.com/rblcoder/mental-health-happiness-economics-human-freedom>)
+
+### Planned analyses / Visualizations / Coding challenges
+
+Planned analyses: Relationship between suicide rates with country,
+gender, age and year in global. (suicide rates with unemployment rate,
+happiness index and GDP)
+
+Visualizations: Plots about the planned analyses above, choropleth map
+of suicide rates
+
+Coding challenges: choropleth map coding
+
+### Planned timeline
+
+November 7 Written proposal document
+
+November 11-15 In person meeting
+
+December 5 Written report given detailed project description
+
+December 5 Webpage overview of project, with short explanatory video
+
+December 5 Brief assessment of your teammates contributions
