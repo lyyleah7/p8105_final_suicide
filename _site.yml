@@ -1,0 +1,18 @@
+navbar:
+  title: "Home"
+  right:
+    - text: "overview"
+      href: overview.html
+    - text: Analysis
+      menu:
+      - text: "graphs"
+        href: graphs.html
+      - text: "flexdashboard"
+        href: flexdashboard.html
+    - icon: fa-envelope fa-lg
+      href: mailto:th2723@cumc.columbia.edu
+    - icon: fa-github fa-lg
+      href: https://github.com/lyyleah7/p8105_final_suicide
+output:
+  html_document:
+    theme: journal

@@ -1,0 +1,10 @@
+---
+title: "Why people suicide?"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    theme: cerulean
+---
+
+# Overview
