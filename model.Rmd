@@ -1,6 +1,10 @@
 ---
-title: "modeling"
-output: github_document
+title: "Model"
+output: 
+  html_document:
+    code_folding: hide
+    toc: true
+    toc_float: true
 ---
 
 ```{r setup, include=FALSE}
@@ -29,7 +33,7 @@ library(ggpubr)
 library(plot3D)
 ```
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 ## clean the data
 data <- read_csv("./data/master.csv") %>% 
   janitor::clean_names()
@@ -58,12 +62,12 @@ happiness_2015 = happiness_2015[, c(1,11,2,3,4,5,6,7,8,9,10)]
 happiness_2016 = happiness_2016[, c(1,11,2,3,4,5,6,7,8,9,10)]
 happiness_2017 = happiness_2017[, c(1,11,2,3,4,5,6,7,9,8,10)]
 happiness = rbind(happiness_2015, happiness_2016, happiness_2017)
-```
 
-```{r}
+## generate correlation plot
 Num.cols <- sapply(happiness, is.numeric)
 Cor.data <- cor(happiness[, Num.cols])
 
-corrplot(Cor.data, method = 'color')  
+corrplot(Cor.data, method = 'color') 
 ```
+
 

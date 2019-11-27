@@ -9,6 +9,8 @@ navbar:
         href: graphs.html
       - text: "flexdashboard"
         href: flexdashboard.html
+      - text: "model"
+        href: model.html
     - icon: fa-envelope fa-lg
       href: mailto:th2723@cumc.columbia.edu
     - icon: fa-github fa-lg
