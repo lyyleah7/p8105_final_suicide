@@ -29,9 +29,8 @@ library(DT) # Displaying data tables
 
 ```{r include=FALSE}
 # Read in data. 
-data <- read.csv('./data/who_suicide_statistics.csv') %>%
-  filter(year != 2016, # filter out 2016 and countries with 0 data. 
-         country != 'Dominica',
+data <- read.csv('./_site/data/who_suicide_statistics.csv') %>%
+  filter(country != 'Dominica',
          country != 'Saint Kitts and Nevis')
 data <- data[complete.cases(data), ]
          
@@ -107,14 +106,14 @@ highchart() %>%
     hc_add_series(overall_tibble, hcaes(x = year, y = suicide_capita, color = suicide_capita), type = "line") %>%
     hc_tooltip(crosshairs = TRUE, borderWidth = 1.5, headerFormat = "", pointFormat = paste("Year: <b>{point.x}</b> <br> Suicides: <b>{point.y}</b>")) %>%
     hc_title(text = "Worldwide suicides by year") %>% 
-    hc_subtitle(text = "1985-2015") %>%
+    hc_subtitle(text = "1979-2016") %>%
     hc_xAxis(title = list(text = "Year")) %>%
     hc_yAxis(title = list(text = "Suicides per 100K people"),
              allowDecimals = FALSE,
              plotLines = list(list(
                     color = "black", width = 1, dashStyle = "Dash", 
                     value = mean(overall_tibble$suicide_capita),
-                    label = list(text = "Mean = 13.16", 
+                    label = list(text = "Mean = 13.09", 
                                  style = list(color = "black", fontSize = 11))))) %>%
     hc_legend(enabled = FALSE) %>% 
     hc_add_theme(custom_theme)
@@ -136,14 +135,14 @@ highchart() %>%
     hc_add_series(sex_tibble, hcaes(x = year, y = suicide_capita, group = sex), type = "line", color = sex_color) %>%
     hc_tooltip(crosshairs = TRUE, borderWidth = 1.5, headerFormat = "", pointFormat = paste("Year: <b>{point.x}</b> <br>","Gender: <b>{point.sex}</b><br>", "Suicides: <b>{point.y}</b>")) %>%
     hc_title(text = "Worldwide suicides by Gender") %>% 
-    hc_subtitle(text = "1985-2015") %>%
+    hc_subtitle(text = "1979-2016") %>%
     hc_xAxis(title = list(text = "Year")) %>%
     hc_yAxis(title = list(text = "Suicides per 100K people"),
              allowDecimals = FALSE,
              plotLines = list(list(
                     color = "black", width = 1, dashStyle = "Dash",
                     value = mean(overall_tibble$suicide_capita),
-                    label = list(text = "Mean = 13.12", 
+                    label = list(text = "Mean = 13.09", 
                                  style = list(color = 'black', fontSize = 11))))) %>% 
     hc_add_theme(custom_theme)
 ```
@@ -164,14 +163,14 @@ highchart() %>%
     hc_add_series(age_tibble, hcaes(x = year, y = suicide_capita, group = age), type = "line", color = age_color) %>%
     hc_tooltip(crosshairs = TRUE, borderWidth = 1.5, headerFormat = "", pointFormat = paste("Year: <b>{point.x}</b> <br>","Age: <b>{point.age}</b><br>", "Suicides: <b>{point.y}</b>")) %>%
     hc_title(text = "Worldwide suicides by Age") %>% 
-    hc_subtitle(text = "1985-2015") %>%
+    hc_subtitle(text = "1979-2016") %>%
     hc_xAxis(title = list(text = "Year")) %>%
     hc_yAxis(title = list(text = "Suicides per 100K people"),
              allowDecimals = FALSE,
              plotLines = list(list(
                     color = "black", width = 1, dashStyle = "Dash",
                     value = mean(overall_tibble$suicide_capita),
-                    label = list(text = "Mean = 13.12", 
+                    label = list(text = "Mean = 13.09", 
                                  style = list(color = 'black', fontSize = 11))))) %>% 
     hc_add_theme(custom_theme)
 ```
@@ -180,7 +179,7 @@ highchart() %>%
 Column {data-width=300}
 -----------------------------------------------------------------------
 
-### Suicides per 100K <font size='1'> (1985-2015) </font>
+### Suicides per 100K <font size='1'> (1979-2016) </font>
 ```{r fig.height=0.8}
 # Grab worldwide number of suicides per 100K people from the data
 total_suicides <- round(mean(overall_tibble$suicide_capita), 2)
@@ -203,7 +202,7 @@ highchart() %>%
                                color = sex_color), type = "pie") %>%
   hc_tooltip(borderWidth = 1.5, headerFormat = "", pointFormat = paste("Gender: <b>{point.sex} ({point.percentage:.1f}%)</b> <br> Suicides per 100K: <b>{point.y}</b>")) %>%
   hc_title(text = "<b>Worldwide suicides by Gender</b>", style = (list(fontSize = '14px'))) %>% 
-  hc_subtitle(text = "1985-2015", style = (list(fontSize = '10px'))) %>%
+  hc_subtitle(text = "1979-2016", style = (list(fontSize = '10px'))) %>%
   hc_plotOptions(pie = list(dataLabels = list(distance = 5, 
                             style = list(fontSize = 10)), 
                             size = 130)) %>% 
@@ -225,7 +224,7 @@ highchart() %>%
                                color = age_color), type = "pie") %>%
   hc_tooltip(borderWidth = 1.5, headerFormat = "", pointFormat = paste("Age: <b>{point.age} ({point.percentage:.1f}%)</b> <br> Suicides per 100K: <b>{point.y}</b>")) %>%  
   hc_title(text = "<b>Worldwide suicides by Age</b>", style = (list(fontSize = '14px'))) %>% 
-  hc_subtitle(text = "1985-2015", style = (list(fontSize = '10px'))) %>%
+  hc_subtitle(text = "1979-2016", style = (list(fontSize = '10px'))) %>%
   hc_plotOptions(pie = list(dataLabels = list(distance = 5, 
                             style = list(fontSize = 10)), 
                             size = 130)) %>% 
@@ -264,7 +263,7 @@ highchart() %>%
 hc_add_series(continent_sex_tibble, hcaes(x = continent, y = suicide_capita, group = sex), type = "column")  %>% 
     hc_colors(colors = sex_color) %>%
     hc_title(text = "Suicides by continent and <b>Gender</b>", style = (list(fontSize = '14px'))) %>% 
-    hc_subtitle(text = "1985-2015") %>%
+    hc_subtitle(text = "1979-2016") %>%
     hc_tooltip(borderWidth = 1.5, pointFormat = paste("Gender: <b> {point.sex} </b> <br> Suicides: <b>{point.y}</b>")) %>%
     hc_xAxis(categories = c("Africa", "Asia", "Europe", "North <br> America", "Oceania", "South <br> America"), labels = list(style = list(fontSize = 8))) %>%
     hc_yAxis(labels = list(style = list(fontSize = 10)),
@@ -291,7 +290,7 @@ highchart() %>%
 hc_add_series(continent_age_tibble, hcaes(x = continent, y = suicide_capita, group = age), type = "column")  %>% 
     hc_colors(colors = age_color) %>%
     hc_title(text = "Suicides by continent and <b>Age</b>", style = (list(fontSize = '14px'))) %>% 
-    hc_subtitle(text = "1985-2015") %>%
+    hc_subtitle(text = "1979-2016") %>%
     hc_tooltip(borderWidth = 1.5, pointFormat = paste("Age: <b> {point.age} </b> <br> Suicides: <b>{point.y}</b>")) %>%
     hc_xAxis(categories = c("Africa", "Asia", "Europe", "North <br> America", "Oceania", "South <br> America"), labels = list(style = list(fontSize = 8))) %>%
     hc_yAxis(labels = list(style = list(fontSize = 10)),
@@ -330,7 +329,7 @@ hc_add_series_map(map_data, continent_tibble, value = "suicide_capita", joinBy =
     hc_add_series(continent_tibble, hcaes(x = continent, y = suicide_capita, color = suicide_capita), type = "pie", name = 'Suicides (per 100K people)')  %>% 
     hc_colorAxis(stops = color_stops()) %>% 
     hc_title(text = "Suicides by Continent") %>% 
-    hc_subtitle(text = "1985-2015") %>%
+    hc_subtitle(text = "1979-2016") %>%
     hc_tooltip(borderWidth = 1.5, valueSuffix = '') %>%
     hc_plotOptions(
     pie = list(center = c('10%', '80%'), size = 110, dataLabels = list(enabled = FALSE))) %>% 
@@ -359,7 +358,7 @@ highchart() %>%
                pointFormat = paste("Suicides: <b>{point.y}</b>")) %>%
     hc_legend(enabled = FALSE) %>%
     hc_title(text = "Suicides by country") %>% 
-    hc_subtitle(text = "1985-2015") %>%
+    hc_subtitle(text = "1979-2016") %>%
     hc_xAxis(categories = country_bar$country, 
              labels = list(step = 1),
              min = 0, max = 25,
@@ -389,7 +388,7 @@ highchart() %>%
     hc_tooltip(borderWidth = 1.5, pointFormat = paste("Gender: <b>{point.sex} ({point.percentage:.1f}%)</b> <br> Suicides per 100K: <b>{point.y}</b>")) %>%
     hc_legend(enabled = TRUE, colorByPoint = TRUE) %>%
     hc_title(text = "Suicides by country and gender") %>% 
-    hc_subtitle(text = "1985-2015") %>%
+    hc_subtitle(text = "1979-2016") %>%
     hc_xAxis(categories = country_tibble$country,
              labels = list(step = 1),
              min = 0, max = 25,
@@ -413,7 +412,7 @@ highchart() %>%
     hc_add_series(country_bar_age, hcaes(x = country, y = suicide_capita, group = age), type = "bar", color = age_color)  %>% 
     hc_tooltip(borderWidth = 1.5, pointFormat = paste("Age: <b>{point.age} ({point.percentage:.1f}%)</b> <br> Suicides per 100K: <b>{point.y}</b>")) %>%
     hc_title(text = "Suicides by country and age") %>% 
-    hc_subtitle(text = "1985-2015") %>%
+    hc_subtitle(text = "1979-2016") %>%
     hc_xAxis(categories = country_tibble$country,
              labels = list(step = 1),
              min = 0, max = 25,
@@ -441,7 +440,7 @@ highchart() %>%
 hc_add_series_map(worldgeojson, country_tibble, value = "suicide_capita", joinBy = c('name','country'))  %>% 
     hc_colorAxis(stops = color_stops()) %>% 
     hc_title(text = "Suicides by Country") %>% 
-    hc_subtitle(text = "1985-2015") %>%
+    hc_subtitle(text = "1979-2016") %>%
     hc_tooltip(borderWidth = 1.5, headerFormat = "", valueSuffix = " suicides (per 100K people)") %>% 
     hc_add_theme(custom_theme)
 ```
@@ -510,5 +509,3 @@ plot_ly(shared_data, x = ~year, y = ~suicide_capita,
        add_markers() %>% 
        highlight("plotly_click")
 ```
-
-
