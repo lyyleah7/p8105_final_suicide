@@ -125,10 +125,10 @@ sex_tibble = data %>%
   group_by(year, sex) %>%
   summarise(suicide_capita = round((sum(suicides_no)/sum(population))*100000, 2))
 
-# pick color for gender.
+# pick color for gender
 sex_color = c("#EE6AA7", "#87CEEB") # baby blue & pink
 
-# create line plot.
+# create line plot
 highchart() %>% 
     hc_add_series(sex_tibble, hcaes(x = year, y = suicide_capita, group = sex), type = "line", color = sex_color) %>%
     hc_tooltip(crosshairs = TRUE, borderWidth = 1.5, headerFormat = "", pointFormat = paste("Year: <b>{point.x}</b> <br>","Gender: <b>{point.sex}</b><br>", "Suicides: <b>{point.y}</b>")) %>%
